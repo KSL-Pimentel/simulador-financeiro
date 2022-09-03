@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Simulador financeiro</title>
+</head>
+<body>
+    <div class="container">
+        <h2>SIMULADOR FINANCEIRO</h2>
+        <h1>Para minimizar seu prejuízo!</h1>
+        
+        <form action="" id="join-us">
+          <div class="fields">
+            <span>
+              <input id="in_incubadora" placeholder="Quantas incubadoras possuem">
+          </span>
+          <br>
+           <span>
+             <input id="in_ovos" placeholder="Ovos por incubadora">
+          </span>
+          <br>
+          <span>
+            <input id="in_valor" placeholder="Valor dos ovos">
+         </span>
+         <br>
+         <span>
+          <input id="in_perda" placeholder="Quantidade de ovos perdidos">
+       </span>
+          </div>
+          <div class="enviar">
+            <input class="enviar" value="Calcular" type="button" onclick="calcular()">
+          </div>
+          <br>
+        </form>
+        <div id="div_mensagem"></div>
+      </div>
+</body>
+</html>
+
+<script>
+    function calcular(){
+      var incubadora = Number(in_incubadora.value)
+      var ovos = Number(in_ovos.value)
+      var valor = Number(in_valor.value)
+      var perda = Number(in_perda.value)
+
+      var energia = incubadora * 179.22
+      var oTotal = ovos * incubadora
+      var oGasto = oTotal * valor
+
+      var oResto = oTotal - perda
+      var prejuO = valor * perda
+      var prejuE = energia / oTotal * perda
+
+      div_mensagem.innerHTML = `Olá, sua empresa gasta R$${oGasto + energia} em ovos e energia, durante todo o processo de incubação. <br> Porem R$${prejuO + prejuE} deste dinheiro acaba sendo perdido, por conta dos ovos que não nasceram.`
+    }
+</script>
